@@ -1,1 +1,495 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechMarkt - Ihr Online-Shop für Elektronik</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+        }
+
+        /* Header */
+        header {
+            background: #ffffff;
+            color: #1a1a1a;
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: #1a1a1a;
+        }
+
+        .logo span {
+            color: #1a1a1a;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #1a1a1a;
+        }
+
+        /* Search Section */
+        .search-section {
+            background: #fafafa;
+            padding: 60px 20px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .search-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 14px 20px;
+            border: 1px solid #d1d1d1;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border-color 0.2s;
+            background: white;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #1a1a1a;
+        }
+
+        .search-box button {
+            padding: 14px 32px;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .search-box button:hover {
+            background: #000000;
+        }
+
+        .search-results {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            min-height: 100px;
+            border: 1px solid #e5e5e5;
+        }
+
+        .search-results h3 {
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .search-query {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e5e5e5;
+            transition: border-color 0.2s;
+        }
+
+        .product-card:hover {
+            border-color: #1a1a1a;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 16px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 20px;
+            color: #1a1a1a;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .buy-button {
+            width: 100%;
+            padding: 12px;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .buy-button:hover {
+            background: #000000;
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .category-badge {
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid #d1d1d1;
+            border-radius: 20px;
+            color: #1a1a1a;
+            font-weight: 400;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .category-badge:hover {
+            background: #1a1a1a;
+            color: white;
+            border-color: #1a1a1a;
+        }
+
+        /* Footer */
+        footer {
+            background: #fafafa;
+            color: #1a1a1a;
+            padding: 60px 20px 40px;
+            margin-top: 80px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 16px;
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-section a:hover {
+            color: #1a1a1a;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e5e5e5;
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* User Account Section */
+        .user-account {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #1a1a1a;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">Tech<span>Markt</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Startseite</a></li>
+                    <li><a href="#products">Produkte</a></li>
+                    <li><a href="#deals">Angebote</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="user-account">
+                <div class="cart-icon">
+                    🛒
+                    <span class="cart-count">3</span>
+                </div>
+                <span>👤 Anmelden</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="search-section">
+        <div class="search-container">
+            <h2 style="margin-bottom: 20px; color: #1a1a1a; font-weight: 600; font-size: 20px;">Finden Sie Ihr perfektes Produkt</h2>
+            <form class="search-box" method="GET" action="">
+                <input type="text" name="search" placeholder="Suche nach Produkten, Marken oder Kategorien..." value="">
+                <button type="submit">Suchen</button>
+            </form>
+            
+            <div class="search-results" id="results">
+                <script>
+                    // Get search parameter from URL
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const searchQuery = urlParams.get('search');
+                    
+                    if (searchQuery) {
+                        // VULNERABLE: Directly inserting user input into HTML
+                        document.getElementById('results').innerHTML = 
+                            '<h3>Suchergebnisse für: <span class="search-query">' + searchQuery + '</span></h3>' +
+                            '<p style="color: #666; margin-top: 10px;">Es wurden keine exakten Treffer gefunden. Bitte versuchen Sie es mit anderen Suchbegriffen.</p>';
+                        
+                        // Also set the input value
+                        document.querySelector('input[name="search"]').value = searchQuery;
+                    } else {
+                        document.getElementById('results').innerHTML = 
+                            '<p style="color: #999; text-align: center;">Geben Sie einen Suchbegriff ein, um Produkte zu finden...</p>';
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <h2 style="margin-bottom: 20px; color: #1a1a1a; font-weight: 600; font-size: 20px;">Beliebte Kategorien</h2>
+        <div class="categories">
+            <div class="category-badge">📱 Smartphones</div>
+            <div class="category-badge">💻 Laptops</div>
+            <div class="category-badge">🎧 Audio</div>
+            <div class="category-badge">📷 Kameras</div>
+            <div class="category-badge">🎮 Gaming</div>
+            <div class="category-badge">⌚ Wearables</div>
+        </div>
+
+        <h2 style="margin: 40px 0 20px; color: #1a1a1a; font-weight: 600; font-size: 20px;">Unsere Top-Angebote</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <div class="product-name">iPhone 15 Pro Max</div>
+                    <div class="product-price">1.299,00 €</div>
+                    <div class="product-description">Das neueste Flaggschiff von Apple mit A17 Pro Chip und Titanium-Design</div>
+                    <button class="buy-button">In den Warenkorb</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">💻</div>
+                <div class="product-info">
+                    <div class="product-name">MacBook Pro 16"</div>
+                    <div class="product-price">2.799,00 €</div>
+                    <div class="product-description">Professionelles Arbeiten mit M3 Max Chip und beeindruckendem Display</div>
+                    <button class="buy-button">In den Warenkorb</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🎧</div>
+                <div class="product-info">
+                    <div class="product-name">Sony WH-1000XM5</div>
+                    <div class="product-price">379,00 €</div>
+                    <div class="product-description">Premium Noise-Cancelling Kopfhörer für audiophile Hörer</div>
+                    <button class="buy-button">In den Warenkorb</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">📷</div>
+                <div class="product-info">
+                    <div class="product-name">Canon EOS R6 Mark II</div>
+                    <div class="product-price">2.899,00 €</div>
+                    <div class="product-description">Professionelle Vollformat-Systemkamera für Fotografie und Video</div>
+                    <button class="buy-button">In den Warenkorb</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🎮</div>
+                <div class="product-info">
+                    <div class="product-name">PlayStation 5</div>
+                    <div class="product-price">549,00 €</div>
+                    <div class="product-description">Next-Gen Gaming Konsole mit ultraschneller SSD</div>
+                    <button class="buy-button">In den Warenkorb</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">⌚</div>
+                <div class="product-info">
+                    <div class="product-name">Apple Watch Series 9</div>
+                    <div class="product-price">449,00 €</div>
+                    <div class="product-description">Intelligente Smartwatch mit fortschrittlichen Gesundheitsfunktionen</div>
+                    <button class="buy-button">In den Warenkorb</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Über TechMarkt</h4>
+                <ul>
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#careers">Karriere</a></li>
+                    <li><a href="#press">Presse</a></li>
+                    <li><a href="#sustainability">Nachhaltigkeit</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Kundenservice</h4>
+                <ul>
+                    <li><a href="#help">Hilfe & FAQ</a></li>
+                    <li><a href="#shipping">Versand & Lieferung</a></li>
+                    <li><a href="#returns">Rückgabe & Umtausch</a></li>
+                    <li><a href="#warranty">Garantie</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Rechtliches</h4>
+                <ul>
+                    <li><a href="#privacy">Datenschutz</a></li>
+                    <li><a href="#terms">AGB</a></li>
+                    <li><a href="#imprint">Impressum</a></li>
+                    <li><a href="#cookies">Cookie-Einstellungen</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Folgen Sie uns</h4>
+                <ul>
+                    <li><a href="#facebook">📘 Facebook</a></li>
+                    <li><a href="#instagram">📷 Instagram</a></li>
+                    <li><a href="#twitter">🐦 Twitter</a></li>
+                    <li><a href="#youtube">📺 YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2025 TechMarkt GmbH. Alle Rechte vorbehalten.
+        </div>
+    </footer>
+</body>
+</html>
