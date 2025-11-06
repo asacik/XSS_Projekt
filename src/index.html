@@ -301,6 +301,11 @@
             position: relative;
             cursor: pointer;
             font-size: 20px;
+            transition: transform 0.2s;
+        }
+        
+        .cart-icon:hover {
+            transform: scale(1.1);
         }
 
         .cart-count {
@@ -491,5 +496,124 @@
             © 2025 TechMarkt GmbH. Alle Rechte vorbehalten.
         </div>
     </footer>
+
+    <script>
+        // Shopping Cart Management
+        let cart = [];
+        
+        // Update cart count in header
+        function updateCartCount() {
+            const cartCountElement = document.querySelector('.cart-count');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCountElement.textContent = totalItems;
+        }
+        
+        // Add product to cart
+        function addToCart(productName, productPrice) {
+            const existingProduct = cart.find(item => item.name === productName);
+            
+            if (existingProduct) {
+                existingProduct.quantity++;
+            } else {
+                cart.push({
+                    name: productName,
+                    price: productPrice,
+                    quantity: 1
+                });
+            }
+            
+            updateCartCount();
+            showCartNotification(productName);
+        }
+        
+        // Show notification when product is added
+        function showCartNotification(productName) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #1a1a1a;
+                color: white;
+                padding: 16px 24px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 1000;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.innerHTML = `<strong>${productName}</strong> wurde zum Warenkorb hinzugefügt`;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 2000);
+        }
+        
+        // Show cart modal
+        function showCart() {
+            if (cart.length === 0) {
+                alert('Ihr Warenkorb ist leer');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (parseFloat(item.price.replace(',', '.')) * item.quantity), 0);
+            
+            let cartContent = '=== WARENKORB ===\n\n';
+            cart.forEach(item => {
+                cartContent += `${item.name}\n`;
+                cartContent += `${item.quantity}x ${item.price} €\n`;
+                cartContent += `Summe: ${(parseFloat(item.price.replace(',', '.')) * item.quantity).toFixed(2).replace('.', ',')} €\n\n`;
+            });
+            cartContent += `\nGESAMTSUMME: ${total.toFixed(2).replace('.', ',')} €`;
+            
+            alert(cartContent);
+        }
+        
+        // Add event listeners to all buy buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const buyButtons = document.querySelectorAll('.buy-button');
+            
+            buyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.product-card');
+                    const productName = productCard.querySelector('.product-name').textContent;
+                    const productPrice = productCard.querySelector('.product-price').textContent.replace(' €', '').trim();
+                    
+                    addToCart(productName, productPrice);
+                });
+            });
+            
+            // Add click event to cart icon
+            document.querySelector('.cart-icon').addEventListener('click', showCart);
+        });
+        
+        // Add animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
