@@ -1,4 +1,4 @@
-# XSS_Projekt
+# Reflected XSS Projekt
 
 ## ⚠️ WARNUNG
 Diese Anwendung enthält absichtlich Sicherheitslücken und darf **NUR** in kontrollierten Umgebungen für Bildungszwecke verwendet werden. Niemals auf öffentlichen Servern deployen!
