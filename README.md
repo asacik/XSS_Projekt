@@ -27,8 +27,6 @@ cd AttServ
 npm start
 ```
 
-4. Browser öffnen und zu `http://localhost:8000` navigieren
-4.1. bei zu ´http://localhost:8000/unsecurepage´ navigieren
+4. Browser öffnen und zu `http://localhost:8000` navigieren, und dann zu `http://localhost:8000/unsecurepage` navigieren
 
-5. Browser öffnen und zu ´http://localhost:3000´ navigieren 
-5.1. bei zu ´http://localhost:3000/dashboard´ navigieren
+5. Browser öffnen und zu `http://localhost:3000` navigieren, und dann zu `http://localhost:3000/dashboard` navigieren
