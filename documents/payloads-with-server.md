@@ -1,13 +1,5 @@
 # Reflected XSS Payloads (mit Attacker Server)
 
-## Hinweis
-Diese Payloads verwenden den lokalen Attacker Server auf `http://localhost:3000`.
-Server muss gestartet sein: `cd attacker-server && npm start`
-
-⚠️ **NUR FÜR BILDUNGSZWECKE IN KONTROLLIERTEN UMGEBUNGEN!**
-
----
-
 ## Cookie-Diebstahl mit Server
 
 ### Cookies an Server senden (fetch)
