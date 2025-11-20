@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-XSS-Protection" content="0">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="TechStore - Ihr Online-Shop für Premium Elektronik, Smartphones, Laptops, Audio-Geräte und Gaming-Zubehör. Kostenloser Versand ab 29€.">
+    <meta name="keywords" content="Elektronik, Smartphones, Laptops, Audio, Gaming, Online Shop, Technik">
+    <meta name="author" content="Ilker Acikgoez">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="TechStore - Premium Elektronik & Gadgets">
+    <meta property="og:description" content="Die besten Elektronik-Deals online. Kostenloser Versand ab 29€.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://techstore.de">
+    <meta property="og:image" content="https://techstore.de/images/og-image.jpg">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TechStore - Premium Elektronik & Gadgets">
+    <meta name="twitter:description" content="Die besten Elektronik-Deals online. Kostenloser Versand ab 29€.">
+
+    <title>TechStore - Premium Elektronik & Gadgets</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="header-top-content">
+                <div>Kostenloser Versand ab 29€</div>
+                <div>Sicherer Kauf • 30 Tage Rückgaberecht</div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="logo">TechStore</div>
+            <div class="search-bar">
+                <form class="search-form" method="GET" action="">
+                    <input type="text" name="search" class="search-input"
+                           placeholder="Produkte durchsuchen..." value="">
+                    <button type="submit" class="search-btn">Suchen</button>
+                </form>
+            </div>
+            <div class="header-icons">
+                <button class="icon-btn">👤</button>
+                <a href="cart.html" class="icon-btn" style="text-decoration: none; color: inherit;">
+                    🛒
+                    <span class="badge">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <ul class="nav-list">
+                <li><a href="#" class="nav-link">Smartphones</a></li>
+                <li><a href="#" class="nav-link">Laptops</a></li>
+                <li><a href="#" class="nav-link">Audio</a></li>
+                <li><a href="#" class="nav-link">Kameras</a></li>
+                <li><a href="#" class="nav-link">Gaming</a></li>
+                <li><a href="#" class="nav-link">Smart Home</a></li>
+                <li><a href="#" class="nav-link">Angebote</a></li>
+                <li><a href="contact.html" class="nav-link">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Search Results Display (URL: ?search=Query) -->
+    <div id="searchResults"></div>
+
+    <!-- Welcome Message (URL: ?username=Name) -->
+    <div id="welcomeMessage"></div>
+
+    <!-- Promo Banner (URL: ?promo=Code) -->
+    <div id="promoBanner"></div>
+
+    <!-- Error Message Display (URL: ?error=Message) -->
+    <div id="errorDisplay"></div>
+
+    <!-- Active Filter Display (URL: ?filter=Category) -->
+    <div id="filterDisplay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h2 class="section-title">Bestseller</h2>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <div class="product-brand">Apple</div>
+                    <div class="product-name">iPhone 15 Pro 256GB Titan Schwarz</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(2.847)</span>
+                    </div>
+                    <div class="product-price">
+                        1.199,00 €
+                        <span class="old-price">1.299,00 €</span>
+                    </div>
+                    <div class="product-delivery">✓ Lieferung morgen</div>
+                    <button class="add-to-cart-btn">In den Warenkorb</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">💻</div>
+                <div class="product-info">
+                    <div class="discount-badge">-15%</div>
+                    <div class="product-brand">Dell</div>
+                    <div class="product-name">XPS 15 Laptop Intel i7 16GB RAM 512GB SSD</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(1.592)</span>
+                    </div>
+                    <div class="product-price">
+                        1.699,00 €
+                        <span class="old-price">1.999,00 €</span>
+                    </div>
+                    <div class="product-delivery">✓ Lieferung in 2-3 Tagen</div>
+                    <button class="add-to-cart-btn">In den Warenkorb</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">🎧</div>
+                <div class="product-info">
+                    <div class="product-brand">Sony</div>
+                    <div class="product-name">WH-1000XM5 Noise Cancelling Kopfhörer</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(4.231)</span>
+                    </div>
+                    <div class="product-price">349,00 €</div>
+                    <div class="product-delivery">✓ Lieferung morgen</div>
+                    <button class="add-to-cart-btn">In den Warenkorb</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image">⌚</div>
+                <div class="product-info">
+                    <div class="discount-badge">-20%</div>
+                    <div class="product-brand">Samsung</div>
+                    <div class="product-name">Galaxy Watch6 Classic 43mm Bluetooth</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="rating-count">(923)</span>
+                    </div>
+                    <div class="product-price">
+                        319,00 €
+                        <span class="old-price">399,00 €</span>
+                    </div>
+                    <div class="product-delivery">✓ Lieferung morgen</div>
+                    <button class="add-to-cart-btn">In den Warenkorb</button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-image">📷</div>
+                <div class="product-info">
+                    <div class="product-brand">Canon</div>
+                    <div class="product-name">EOS R6 Mark II Gehäuse Vollformat</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(567)</span>
+                    </div>
+                    <div class="product-price">2.699,00 €</div>
+                    <div class="product-delivery">✓ Lieferung in 2-3 Tagen</div>
+                    <button class="add-to-cart-btn">In den Warenkorb</button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-image">🎮</div>
+                <div class="product-info">
+                    <div class="product-brand">Sony</div>
+                    <div class="product-name">PlayStation 5 Digital Edition + Controller</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(8.421)</span>
+                    </div>
+                    <div class="product-price">449,00 €</div>
+                    <div class="product-delivery">✓ Lieferung morgen</div>
+                    <button class="add-to-cart-btn">In den Warenkorb</button>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card">
+                <div class="product-image">💻</div>
+                <div class="product-info">
+                    <div class="product-brand">Apple</div>
+                    <div class="product-name">MacBook Air 15" M3 8GB RAM 256GB SSD</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(1.234)</span>
+                    </div>
+                    <div class="product-price">1.499,00 €</div>
+                    <div class="product-delivery">✓ Lieferung morgen</div>
+                    <button class="add-to-cart-btn">In den Warenkorb</button>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card">
+                <div class="product-image">🔊</div>
+                <div class="product-info">
+                    <div class="discount-badge">-25%</div>
+                    <div class="product-brand">Sonos</div>
+                    <div class="product-name">Era 300 Smart Speaker mit Dolby Atmos</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="rating-count">(689)</span>
+                    </div>
+                    <div class="product-price">
+                        374,00 €
+                        <span class="old-price">499,00 €</span>
+                    </div>
+                    <div class="product-delivery">✓ Lieferung in 2-3 Tagen</div>
+                    <button class="add-to-cart-btn">In den Warenkorb</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Product Review Section -->
+    <section class="reviews-section" style="max-width: 1200px; margin: 50px auto; padding: 0 20px;">
+        <h2 class="section-title">Kundenbewertungen</h2>
+        <div style="background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 30px;">
+            <h3 style="margin-top: 0;">Ihre Meinung ist uns wichtig!</h3>
+            <p style="color: #666; margin-bottom: 20px;">Teilen Sie Ihre Erfahrungen mit unseren Produkten</p>
+            <form method="GET" action="">
+                <input type="hidden" name="product_id" value="12345">
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 500;">Ihr Name:</label>
+                    <input type="text" name="reviewer" placeholder="Max Mustermann" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 500;">Ihre Bewertung:</label>
+                    <textarea name="review" placeholder="Schreiben Sie hier Ihre Bewertung..." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; min-height: 100px;"></textarea>
+                </div>
+                <button type="submit" style="background: #212529; color: white; padding: 12px 30px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Bewertung abschicken</button>
+            </form>
+        </div>
+        <!-- Display submitted review -->
+        <div id="reviewDisplay"></div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 60px 20px; margin-top: 50px;">
+        <div style="max-width: 600px; margin: 0 auto; text-align: center; color: white;">
+            <h2 style="margin-top: 0; font-size: 32px;">Newsletter abonnieren</h2>
+            <p style="font-size: 18px; margin-bottom: 30px;">Erhalten Sie exklusive Angebote und News direkt in Ihr Postfach!</p>
+            <form method="GET" action="" style="display: flex; gap: 10px; max-width: 500px; margin: 0 auto;">
+                <input type="email" name="email" placeholder="ihre.email@beispiel.de" style="flex: 1; padding: 15px; border: none; border-radius: 4px; font-size: 16px;">
+                <button type="submit" style="background: #212529; color: white; padding: 15px 30px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: 600;">Anmelden</button>
+            </form>
+            <div id="newsletterConfirm" style="margin-top: 20px; font-size: 18px;"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Über uns</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Unternehmen</a></li>
+                    <li><a href="#">Karriere</a></li>
+                    <li><a href="#">Presse</a></li>
+                    <li><a href="#">Nachhaltigkeit</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Kundenservice</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Kontakt</a></li>
+                    <li><a href="#">Versand & Lieferung</a></li>
+                    <li><a href="#">Rückgabe</a></li>
+                    <li><a href="#">Garantie</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Rechtliches</h4>
+                <ul class="footer-links">
+                    <li><a href="#">AGB</a></li>
+                    <li><a href="#">Datenschutz</a></li>
+                    <li><a href="#">Impressum</a></li>
+                    <li><a href="#">Widerrufsrecht</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Zahlungsarten</h4>
+                <ul class="footer-links">
+                    <li>Kreditkarte</li>
+                    <li>PayPal</li>
+                    <li>Apple Pay</li>
+                    <li>Rechnung</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 TechStore GmbH • Alle Rechte vorbehalten
+        </div>
+    </footer>
+<script src="script.js"></script>
+</body>
+</html>

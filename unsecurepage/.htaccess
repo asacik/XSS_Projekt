@@ -1,0 +1,6 @@
+# Deaktiviere XSS-Schutz für Demo-Zwecke
+# WARNUNG: Nur für Testzwecke verwenden!
+
+Header set X-XSS-Protection "0"
+Header unset X-Content-Type-Options
+Header unset Content-Security-Policy

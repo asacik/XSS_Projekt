@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-XSS-Protection" content="0">
+    <title>Kontakt - TechStore</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="header-top-content">
+                <div>Kostenloser Versand ab 29€</div>
+                <div>Sicherer Kauf • 30 Tage Rückgaberecht</div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">TechStore</a></div>
+            <div class="search-bar">
+                <form class="search-form" method="GET" action="index.html">
+                    <input type="text" name="search" class="search-input"
+                           placeholder="Produkte durchsuchen..." value="">
+                    <button type="submit" class="search-btn">Suchen</button>
+                </form>
+            </div>
+            <div class="header-icons">
+                <button class="icon-btn">👤</button>
+                <a href="cart.html" class="icon-btn" style="text-decoration: none; color: inherit;">
+                    🛒
+                    <span class="badge">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="#" class="nav-link">Smartphones</a></li>
+                <li><a href="#" class="nav-link">Laptops</a></li>
+                <li><a href="#" class="nav-link">Audio</a></li>
+                <li><a href="#" class="nav-link">Kameras</a></li>
+                <li><a href="#" class="nav-link">Gaming</a></li>
+                <li><a href="contact.html" class="nav-link" style="color: #667eea; font-weight: 600;">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section" style="max-width: 800px; margin: 50px auto; padding: 0 20px; min-height: 60vh;">
+        <h1 class="section-title" style="font-size: 36px; margin-bottom: 10px;">Kontaktieren Sie uns</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 40px; font-size: 18px;">
+            Haben Sie Fragen oder benötigen Sie Hilfe? Unser Support-Team ist für Sie da!
+        </p>
+
+        <div style="background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 40px;">
+                <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                    <div style="font-size: 36px; margin-bottom: 10px;">📧</div>
+                    <h3 style="margin: 0 0 10px 0; color: #333;">E-Mail</h3>
+                    <p style="margin: 0; color: #666;">keinechtershop@web.de</p>
+                </div>
+                <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                    <div style="font-size: 36px; margin-bottom: 10px;">📞</div>
+                    <h3 style="margin: 0 0 10px 0; color: #333;">Telefon</h3>
+                    <p style="margin: 0; color: #666;">+49 (0) 800 123 4567</p>
+                </div>
+                <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                    <div style="font-size: 36px; margin-bottom: 10px;">🕐</div>
+                    <h3 style="margin: 0 0 10px 0; color: #333;">Öffnungszeiten</h3>
+                    <p style="margin: 0; color: #666;">Mo-Fr: 8:00-20:00 Uhr</p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 0; margin-bottom: 20px; color: #333;">Kontaktformular</h2>
+            <p style="color: #666; margin-bottom: 25px;">Füllen Sie das Formular aus und wir melden uns schnellstmöglich bei Ihnen.</p>
+
+            <form method="GET" action="">
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 500; color: #333;">Name *</label>
+                    <input type="text" name="contact_name" placeholder="Ihr vollständiger Name" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 500; color: #333;">E-Mail *</label>
+                    <input type="email" name="contact_email" placeholder="ihre.email@beispiel.de" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 500; color: #333;">Betreff *</label>
+                    <input type="text" name="subject" placeholder="Worum geht es?" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 500; color: #333;">Kategorie</label>
+                    <select name="category" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; background: white;">
+                        <option value="">Bitte wählen...</option>
+                        <option value="Produktfrage">Produktfrage</option>
+                        <option value="Bestellung">Bestellung</option>
+                        <option value="Retoure">Retoure</option>
+                        <option value="Technischer Support">Technischer Support</option>
+                        <option value="Sonstiges">Sonstiges</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 500; color: #333;">Nachricht *</label>
+                    <textarea name="message" placeholder="Beschreiben Sie Ihr Anliegen..." required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; min-height: 150px; font-size: 16px; font-family: inherit;"></textarea>
+                </div>
+                <button type="submit" style="width: 100%; background: #212529; color: white; padding: 15px 30px; border: none; border-radius: 4px; cursor: pointer; font-size: 18px; font-weight: 600; transition: background 0.3s;">Nachricht senden</button>
+            </form>
+
+            <div id="contactConfirm" style="margin-top: 25px;"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Über uns</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Unternehmen</a></li>
+                    <li><a href="#">Karriere</a></li>
+                    <li><a href="#">Presse</a></li>
+                    <li><a href="#">Nachhaltigkeit</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Kundenservice</h4>
+                <ul class="footer-links">
+                    <li><a href="contact.html">Kontakt</a></li>
+                    <li><a href="#">Versand & Lieferung</a></li>
+                    <li><a href="#">Rückgabe</a></li>
+                    <li><a href="#">Garantie</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Rechtliches</h4>
+                <ul class="footer-links">
+                    <li><a href="#">AGB</a></li>
+                    <li><a href="#">Datenschutz</a></li>
+                    <li><a href="#">Impressum</a></li>
+                    <li><a href="#">Widerrufsrecht</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Zahlungsarten</h4>
+                <ul class="footer-links">
+                    <li>Kreditkarte</li>
+                    <li>PayPal</li>
+                    <li>Apple Pay</li>
+                    <li>Rechnung</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 TechStore GmbH • Alle Rechte vorbehalten
+        </div>
+    </footer>
+<script src="script.js"></script>
+</body>
+</html>

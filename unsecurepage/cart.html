@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-XSS-Protection" content="0">
+    <title>Warenkorb - TechStore</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="header-top-content">
+                <div>Kostenloser Versand ab 29€</div>
+                <div>Sicherer Kauf • 30 Tage Rückgaberecht</div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">TechStore</a></div>
+            <div class="search-bar">
+                <form class="search-form" method="GET" action="index.html">
+                    <input type="text" name="search" class="search-input"
+                           placeholder="Produkte durchsuchen..." value="">
+                    <button type="submit" class="search-btn">Suchen</button>
+                </form>
+            </div>
+            <div class="header-icons">
+                <button class="icon-btn">👤</button>
+                <button class="icon-btn">
+                    🛒
+                    <span class="badge">3</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="#" class="nav-link">Smartphones</a></li>
+                <li><a href="#" class="nav-link">Laptops</a></li>
+                <li><a href="#" class="nav-link">Audio</a></li>
+                <li><a href="#" class="nav-link">Kameras</a></li>
+                <li><a href="#" class="nav-link">Gaming</a></li>
+                <li><a href="contact.html" class="nav-link">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Cart Content -->
+    <main class="main-content" style="max-width: 1000px; margin: 40px auto; padding: 0 20px;">
+        <h1 class="section-title" style="font-size: 32px; margin-bottom: 30px;">Ihr Warenkorb</h1>
+
+        <div style="display: grid; grid-template-columns: 1fr 400px; gap: 30px;">
+            <!-- Cart Items -->
+            <div>
+                <!-- Item 1 -->
+                <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 15px; display: flex; gap: 20px; align-items: center;">
+                    <div style="width: 80px; height: 80px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 32px;">📱</div>
+                    <div style="flex: 1;">
+                        <div style="font-size: 12px; color: #6c757d; text-transform: uppercase; font-weight: 600;">Apple</div>
+                        <div style="font-size: 16px; font-weight: 600; color: #212529; margin: 5px 0;">iPhone 15 Pro 256GB Titan Schwarz</div>
+                        <div style="font-size: 14px; color: #6c757d;">Menge: 1</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 20px; font-weight: 700; color: #212529;">1.199,00 €</div>
+                        <button class="remove-item-btn" style="background: none; border: none; color: #dc3545; cursor: pointer; font-size: 14px; margin-top: 5px;">Entfernen</button>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 15px; display: flex; gap: 20px; align-items: center;">
+                    <div style="width: 80px; height: 80px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 32px;">🎧</div>
+                    <div style="flex: 1;">
+                        <div style="font-size: 12px; color: #6c757d; text-transform: uppercase; font-weight: 600;">Sony</div>
+                        <div style="font-size: 16px; font-weight: 600; color: #212529; margin: 5px 0;">WH-1000XM5 Noise Cancelling Kopfhörer</div>
+                        <div style="font-size: 14px; color: #6c757d;">Menge: 1</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 20px; font-weight: 700; color: #212529;">349,00 €</div>
+                        <button class="remove-item-btn" style="background: none; border: none; color: #dc3545; cursor: pointer; font-size: 14px; margin-top: 5px;">Entfernen</button>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 15px; display: flex; gap: 20px; align-items: center;">
+                    <div style="width: 80px; height: 80px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 32px;">⌚</div>
+                    <div style="flex: 1;">
+                        <div style="font-size: 12px; color: #6c757d; text-transform: uppercase; font-weight: 600;">Samsung</div>
+                        <div style="font-size: 16px; font-weight: 600; color: #212529; margin: 5px 0;">Galaxy Watch6 Classic 43mm Bluetooth</div>
+                        <div style="font-size: 14px; color: #6c757d;">Menge: 1</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 20px; font-weight: 700; color: #212529;">319,00 €</div>
+                        <button class="remove-item-btn" style="background: none; border: none; color: #dc3545; cursor: pointer; font-size: 14px; margin-top: 5px;">Entfernen</button>
+                    </div>
+                </div>
+
+                <!-- Continue Shopping -->
+                <div style="margin-top: 20px;">
+                    <a href="index.html" style="color: #667eea; text-decoration: none; font-weight: 600; font-size: 16px;">← Weiter einkaufen</a>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div>
+                <div style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: sticky; top: 100px;">
+                    <h2 style="margin: 0 0 20px 0; font-size: 20px; color: #212529;">Bestellübersicht</h2>
+
+                    <!-- Voucher/Discount Code Section -->
+                    <div style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid #e9ecef;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600; color: #212529; font-size: 14px;">Gutschein- oder Rabattcode</label>
+                        <form method="GET" action="" style="display: flex; gap: 10px;">
+                            <input type="text" name="voucher" placeholder="Code eingeben" style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px;">
+                            <button type="submit" style="background: #667eea; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px; white-space: nowrap;">Einlösen</button>
+                        </form>
+                        <div id="voucherResult" style="margin-top: 15px;"></div>
+                    </div>
+
+                    <!-- Price Summary -->
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px; color: #6c757d; font-size: 14px;">
+                            <span>Zwischensumme:</span>
+                            <span>1.867,00 €</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px; color: #6c757d; font-size: 14px;">
+                            <span>Versand:</span>
+                            <span style="color: #28a745; font-weight: 600;">Kostenlos</span>
+                        </div>
+                        <div id="discountLine" style="display: none; margin-bottom: 10px;">
+                            <div style="display: flex; justify-content: space-between; color: #28a745; font-size: 14px; font-weight: 600;">
+                                <span>Rabatt:</span>
+                                <span id="discountAmount">- 0,00 €</span>
+                            </div>
+                        </div>
+                        <div style="border-top: 1px solid #e9ecef; margin: 15px 0; padding-top: 15px;">
+                            <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: 700; color: #212529;">
+                                <span>Gesamt:</span>
+                                <span id="totalAmount">1.867,00 €</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkout Button -->
+                    <button style="width: 100%; background: #212529; color: white; padding: 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 16px; margin-bottom: 15px;">Zur Kasse</button>
+
+                    <!-- Trust Badges -->
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; padding-top: 15px; border-top: 1px solid #e9ecef; font-size: 12px; color: #6c757d;">
+                        <span>🔒 Sichere Zahlung</span>
+                        <span>📦 Kostenloser Versand</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommended Products -->
+        <section style="margin-top: 60px;">
+            <h2 class="section-title">Das könnte Ihnen auch gefallen</h2>
+            <div class="product-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image" style="height: 180px; font-size: 48px;">💻</div>
+                    <div class="product-info">
+                        <div class="product-brand">Apple</div>
+                        <div class="product-name">MacBook Air 15" M3</div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(1.234)</span>
+                        </div>
+                        <div class="product-price">1.499,00 €</div>
+                        <button class="add-to-cart-btn">In den Warenkorb</button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image" style="height: 180px; font-size: 48px;">🎮</div>
+                    <div class="product-info">
+                        <div class="product-brand">Sony</div>
+                        <div class="product-name">PlayStation 5 Digital Edition</div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(8.421)</span>
+                        </div>
+                        <div class="product-price">449,00 €</div>
+                        <button class="add-to-cart-btn">In den Warenkorb</button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image" style="height: 180px; font-size: 48px;">📷</div>
+                    <div class="product-info">
+                        <div class="product-brand">Canon</div>
+                        <div class="product-name">EOS R6 Mark II Vollformat</div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(567)</span>
+                        </div>
+                        <div class="product-price">2.699,00 €</div>
+                        <button class="add-to-cart-btn">In den Warenkorb</button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image" style="height: 180px; font-size: 48px;">🔊</div>
+                    <div class="product-info">
+                        <div class="discount-badge">-25%</div>
+                        <div class="product-brand">Sonos</div>
+                        <div class="product-name">Era 300 Smart Speaker</div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(689)</span>
+                        </div>
+                        <div class="product-price">374,00 €</div>
+                        <button class="add-to-cart-btn">In den Warenkorb</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Über uns</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Unternehmen</a></li>
+                    <li><a href="#">Karriere</a></li>
+                    <li><a href="#">Presse</a></li>
+                    <li><a href="#">Nachhaltigkeit</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Kundenservice</h4>
+                <ul class="footer-links">
+                    <li><a href="contact.html">Kontakt</a></li>
+                    <li><a href="#">Versand & Lieferung</a></li>
+                    <li><a href="#">Rückgabe</a></li>
+                    <li><a href="#">Garantie</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Rechtliches</h4>
+                <ul class="footer-links">
+                    <li><a href="#">AGB</a></li>
+                    <li><a href="#">Datenschutz</a></li>
+                    <li><a href="#">Impressum</a></li>
+                    <li><a href="#">Widerrufsrecht</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Zahlungsarten</h4>
+                <ul class="footer-links">
+                    <li>Kreditkarte</li>
+                    <li>PayPal</li>
+                    <li>Apple Pay</li>
+                    <li>Rechnung</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 TechStore GmbH • Alle Rechte vorbehalten
+        </div>
+    </footer>
+<script src="script.js"></script>
+</body>
+</html>
