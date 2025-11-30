@@ -42,21 +42,7 @@ if (searchQuery) {
     }
 }
 
-// SICHERHEITSLÜCKE 2: Username Welcome Message
-const username = urlParams.get('username');
-if (username) {
-    const welcomeDiv = document.getElementById('welcomeMessage');
-    if (welcomeDiv) {
-        welcomeDiv.innerHTML =
-            '<div style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; padding: 20px; text-align: center;">' +
-            '<h3 style="margin: 0; font-size: 24px;">Willkommen zurück, ' + username + '! 👋</h3>' +
-            '<p style="margin: 5px 0 0 0; opacity: 0.9;">Schön, dass Sie wieder da sind!</p>' +
-            '</div>';
-        welcomeDiv.style.display = 'block';
-    }
-}
-
-// SICHERHEITSLÜCKE 3: Promo Banner
+// SICHERHEITSLÜCKE 2: Promo Banner
 const promo = urlParams.get('promo');
 if (promo) {
     const promoDiv = document.getElementById('promoBanner');
@@ -69,7 +55,7 @@ if (promo) {
     }
 }
 
-// SICHERHEITSLÜCKE 4: Error Message
+// SICHERHEITSLÜCKE 3: Error Message
 const error = urlParams.get('error');
 if (error) {
     const errorDiv = document.getElementById('errorDisplay');
@@ -82,7 +68,7 @@ if (error) {
     }
 }
 
-// SICHERHEITSLÜCKE 5: Filter Display
+// SICHERHEITSLÜCKE 4: Filter Display
 const filter = urlParams.get('filter');
 if (filter) {
     const filterDiv = document.getElementById('filterDisplay');
@@ -96,7 +82,7 @@ if (filter) {
     }
 }
 
-// SICHERHEITSLÜCKE 6: Product Review Display
+// SICHERHEITSLÜCKE 5: Product Review Display
 const reviewer = urlParams.get('reviewer');
 const review = urlParams.get('review');
 if (reviewer && review) {
@@ -117,20 +103,7 @@ if (reviewer && review) {
     }
 }
 
-// SICHERHEITSLÜCKE 7: Newsletter Confirmation
-const email = urlParams.get('email');
-if (email) {
-    const newsletterDiv = document.getElementById('newsletterConfirm');
-    if (newsletterDiv) {
-        newsletterDiv.innerHTML = '✅ Vielen Dank! ' + email + ' wurde erfolgreich angemeldet!';
-        newsletterDiv.style.background = 'rgba(255,255,255,0.2)';
-        newsletterDiv.style.padding = '15px';
-        newsletterDiv.style.borderRadius = '4px';
-        newsletterDiv.style.display = 'block';
-    }
-}
-
-// SICHERHEITSLÜCKE 8: Contact Form Confirmation
+// SICHERHEITSLÜCKE 6: Contact Form Confirmation
 const contactName = urlParams.get('contact_name');
 const subject = urlParams.get('subject');
 const message = urlParams.get('message');
@@ -147,7 +120,7 @@ if (contactName && subject && message) {
     }
 }
 
-// SICHERHEITSLÜCKE 9: Voucher/Discount Code (for cart.html)
+// SICHERHEITSLÜCKE 7: Voucher/Discount Code (for cart.html)
 const voucher = urlParams.get('voucher');
 if (voucher) {
     const voucherResultDiv = document.getElementById('voucherResult');

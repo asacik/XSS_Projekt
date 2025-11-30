@@ -188,38 +188,7 @@ if (searchQuery) {
 }
 
 /**
- * SICHERHEITSLÜCKE 2 GEFIXT: Username Welcome Message
- *
- * ORIGINAL (UNSICHER):
- * welcomeDiv.innerHTML = '...' + username + '...'
- *
- * LÖSUNG (SICHER):
- * Gleicher Ansatz wie bei Search Query - createElement() + createTextNode()
- */
-const username = urlParams.get('username');
-if (username) {
-    const welcomeDiv = document.getElementById('welcomeMessage');
-    if (welcomeDiv) {
-        const sanitizedUsername = sanitizeInput(username);
-
-        const container = document.createElement('div');
-        setStyles(container, 'background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; padding: 20px; text-align: center;');
-
-        const heading = createElementWithText('h3', 'Willkommen zurück, ' + sanitizedUsername + '! 👋');
-        setStyles(heading, 'margin: 0; font-size: 24px;');
-
-        const paragraph = createElementWithText('p', 'Schön, dass Sie wieder da sind!');
-        setStyles(paragraph, 'margin: 5px 0 0 0; opacity: 0.9;');
-
-        container.appendChild(heading);
-        container.appendChild(paragraph);
-        welcomeDiv.appendChild(container);
-        welcomeDiv.style.display = 'block';
-    }
-}
-
-/**
- * SICHERHEITSLÜCKE 3 GEFIXT: Promo Banner
+ * SICHERHEITSLÜCKE 2 GEFIXT: Promo Banner
  */
 const promo = urlParams.get('promo');
 if (promo) {
@@ -345,22 +314,6 @@ if (reviewer && review) {
 
         reviewDiv.appendChild(container);
         reviewDiv.style.display = 'block';
-    }
-}
-
-/**
- * SICHERHEITSLÜCKE 7 GEFIXT: Newsletter Confirmation
- */
-const email = urlParams.get('email');
-if (email) {
-    const newsletterDiv = document.getElementById('newsletterConfirm');
-    if (newsletterDiv) {
-        const sanitizedEmail = sanitizeInput(email);
-
-        // Verwende textContent statt innerHTML
-        newsletterDiv.textContent = '✅ Vielen Dank! ' + sanitizedEmail + ' wurde erfolgreich angemeldet!';
-        setStyles(newsletterDiv, 'background: rgba(255,255,255,0.2); padding: 15px; border-radius: 4px;');
-        newsletterDiv.style.display = 'block';
     }
 }
 

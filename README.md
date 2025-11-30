@@ -8,7 +8,7 @@ Diese Anwendung enthält **absichtlich Sicherheitslücken** und darf **NUR** in 
 Dieses Projekt demonstriert **Reflected XSS-Angriffe** anhand einer verwundbaren E-Commerce-Website.
 
 **Komponenten:**
-- **unsecurepage/** - Vulnerable Website mit 9 XSS-Lücken
+- **unsecurepage/** - Vulnerable Website mit 7 XSS-Lücken
 - **securepage/** - Sichere Implementierung mit CSP
 - **AttServ/** - Attacker-Server (Terminal-basiert)
 
@@ -48,17 +48,15 @@ python -m http.server 8000
 
 ## 📚 XSS-Schwachstellen
 
-Die unsicure Website hat **9 verschiedene XSS-Angriffsvektoren:**
+Die unsicure Website hat **7 verschiedene XSS-Angriffsvektoren:**
 
 1. Search Query (`?search=`)
-2. Username (`?username=`)
-3. Promo Banner (`?promo=`)
-4. Error Display (`?error=`)
-5. Filter (`?filter=`)
-6. Review (`?reviewer=&review=`)
-7. Email (`?email=`)
-8. Contact Form (`?contact_name=&subject=&message=`)
-9. Voucher Code (`?voucher=`)
+2. Promo Banner (`?promo=`)
+3. Error Display (`?error=`)
+4. Filter (`?filter=`)
+5. Review (`?reviewer=&review=`)
+6. Contact Form (`?contact_name=&subject=&message=`)
+7. Voucher Code (`?voucher=`)
 
 Alle Payloads sind in `payloads.md` dokumentiert
 
