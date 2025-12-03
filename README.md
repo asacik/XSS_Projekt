@@ -7,11 +7,6 @@ Diese Anwendung enthält **absichtlich Sicherheitslücken** und darf **NUR** in 
 
 Dieses Projekt demonstriert **Reflected XSS-Angriffe** anhand einer verwundbaren E-Commerce-Website und zeigt Schutzmaßnahmen.
 
-**Komponenten:**
-- **unsecurepage/** - Vulnerable Website mit 7 Reflected XSS-Lücken (Flask Server)
-- **securepage/** - Sichere Implementierung mit Input-Sanitization + CSP (Flask Server)
-- **AttServ/** - Attacker-Server zum Abfangen gestohlener Daten (Node.js)
-
 ##  Installation
 
 ### 1. Repository klonen
@@ -63,23 +58,3 @@ Zeigt gestohlene Cookies und Tastatureingaben im Terminal an.
 - **Sichere Website:** `http://localhost:6000/` (XSS wird blockiert!)
 - **Vergleich:** Teste denselben Payload auf beiden Seiten!
 
-
-## 📚 XSS-Schwachstellen
-
-Die unsicure Website hat **7 verschiedene XSS-Angriffsvektoren:**
-
-1. Search Query (`?search=`)
-2. Promo Banner (`?promo=`)
-3. Error Display (`?error=`)
-4. Filter (`?filter=`)
-5. Review (`?reviewer=&review=`)
-6. Contact Form (`?contact_name=&subject=&message=`)
-7. Voucher Code (`?voucher=`)
-
-Alle Payloads sind in `payloads.md` dokumentiert
-
-## ⚠️ Rechtlicher Hinweis
-
-Dieses Projekt dient **ausschließlich Bildungszwecken**.
-
-Das Ausnutzen von XSS-Schwachstellen ohne Erlaubnis ist **illegal**.
