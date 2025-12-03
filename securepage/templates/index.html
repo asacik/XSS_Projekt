@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>TechStore - Sicher</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesecure.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="header-main">
+            <div class="logo">TechStore 🛡️</div>
+            <div class="search-bar">
+                <form method="GET" action="/">
+                    <input type="text" name="search" value="{{ search_value }}" placeholder="Suche...">
+                    <button type="submit">Suchen</button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    {{ search_results|safe }}
+    {{ promo_banner|safe }}
+    {{ error_display|safe }}
+
+    <main class="main-content">
+        <div style="background: #d4edda; padding: 15px; margin-bottom: 20px;">
+            Diese Seite ist gegen XSS geschuetzt (Input Escaping + CSP)
+        </div>
+        <h2>Bestseller</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <div class="product-brand">Apple</div>
+                    <div class="product-name">iPhone 15 Pro</div>
+                    <div class="product-price">1.199 €</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section style="max-width: 1200px; margin: 50px auto; padding: 0 20px;">
+        <h2>Bewertungen</h2>
+        <form method="GET" action="/">
+            <div style="margin-bottom: 15px;">
+                <input type="text" name="reviewer" placeholder="Name" style="width: 100%; padding: 10px;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <textarea name="review" placeholder="Bewertung..." style="width: 100%; padding: 10px;"></textarea>
+            </div>
+            <button type="submit" style="padding: 10px 20px;">Abschicken</button>
+        </form>
+        {{ review_display|safe }}
+    </section>
+</body>
+</html>

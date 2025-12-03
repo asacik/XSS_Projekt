@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Kontakt - TechStore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="header-main">
+            <div class="logo">TechStore</div>
+        </div>
+    </header>
+    <main class="main-content" style="max-width: 800px; margin: 40px auto;">
+        <h1>Kontakt</h1>
+        {{ contact_confirm|safe }}
+        <div style="background: white; padding: 30px;">
+            <form method="GET" action="/contact">
+                <div style="margin-bottom: 20px;">
+                    <label>Name:</label>
+                    <input type="text" name="contact_name" style="width: 100%; padding: 10px;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label>Betreff:</label>
+                    <input type="text" name="subject" style="width: 100%; padding: 10px;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label>Nachricht:</label>
+                    <textarea name="message" style="width: 100%; padding: 10px; min-height: 150px;"></textarea>
+                </div>
+                <button type="submit" style="background: #212529; color: white; padding: 12px 30px; border: none;">Senden</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

@@ -5,12 +5,12 @@ Diese Anwendung enthält **absichtlich Sicherheitslücken** und darf **NUR** in 
 
 ##  Über das Projekt
 
-Dieses Projekt demonstriert **Reflected XSS-Angriffe** anhand einer verwundbaren E-Commerce-Website.
+Dieses Projekt demonstriert **Reflected XSS-Angriffe** anhand einer verwundbaren E-Commerce-Website und zeigt Schutzmaßnahmen.
 
 **Komponenten:**
-- **unsecurepage/** - Vulnerable Website mit 7 XSS-Lücken
-- **securepage/** - Sichere Implementierung mit CSP
-- **AttServ/** - Attacker-Server (Terminal-basiert)
+- **unsecurepage/** - Vulnerable Website mit 7 Reflected XSS-Lücken (Flask Server)
+- **securepage/** - Sichere Implementierung mit Input-Sanitization + CSP (Flask Server)
+- **AttServ/** - Attacker-Server zum Abfangen gestohlener Daten (Node.js)
 
 ##  Installation
 
@@ -20,30 +20,48 @@ git clone https://github.com/asacik/XSS_Projekt.git
 cd XSS_Projekt
 ```
 
-### 2. Node.js Abhängigkeiten installieren
+### 2. Python Abhängigkeiten installieren
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Node.js Abhängigkeiten installieren (für Attacker-Server)
 ```bash
 cd AttServ
 npm install
+cd ..
 ```
 
 ## Projekt starten
 
-### 1. Attacker-Server starten (Terminal 1)
+Du brauchst **mindestens 2 Terminals** (optional 3 mit Attacker-Server):
+
+### Terminal 1: Unsichere Website (REFLECTED XSS)
+```bash
+cd unsecurepage
+python server.py
+```
+Server läuft auf: **`http://localhost:5000`** ⚠️ VERWUNDBAR
+
+### Terminal 2: Sichere Website (mit Schutz)
+```bash
+cd securepage
+python server_secure.py
+```
+Server läuft auf: **`http://localhost:6000`** ✅ GESCHÜTZT
+
+### Terminal 3 (Optional): Attacker-Server
 ```bash
 cd AttServ
 npm start
 ```
+Server läuft auf: **`http://localhost:3000`**
+Zeigt gestohlene Cookies und Tastatureingaben im Terminal an.
 
-Der Server zeigt gestohlene Cookies und Tastatureingaben direkt im Terminal an.
-
-### 2. Webserver starten (Terminal 2)
-```bash
-python -m http.server 8000
-```
-
-### 3. Browser öffnen
-- **Unsichere Website:** `http://localhost:8000/unsecurepage/`
-- **Sichere Website:** `http://localhost:8000/securepage/`
+### Browser öffnen
+- **Unsichere Website:** `http://localhost:5000/` (XSS funktioniert!)
+- **Sichere Website:** `http://localhost:6000/` (XSS wird blockiert!)
+- **Vergleich:** Teste denselben Payload auf beiden Seiten!
 
 
 ## 📚 XSS-Schwachstellen

