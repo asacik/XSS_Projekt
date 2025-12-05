@@ -7,6 +7,8 @@ Diese Anwendung enthält **absichtlich Sicherheitslücken** und darf **NUR** in 
 
 Dieses Projekt demonstriert **Reflected XSS-Angriffe** anhand einer verwundbaren E-Commerce-Website und zeigt Schutzmaßnahmen.
 
+Eine ausführliche **Schritt-für-Schritt Anleitung** findest du in der Datei [SBS_Projekt.pdf](SBS_Projekt.pdf).
+
 ##  Installation
 
 ### 1. Repository klonen
@@ -43,7 +45,7 @@ Server läuft auf: **`http://localhost:5000`** ⚠️ VERWUNDBAR
 cd securepage
 python server_secure.py
 ```
-Server läuft auf: **`http://localhost:6000`** ✅ GESCHÜTZT
+Server läuft auf: **`http://localhost:5001`** ✅ GESCHÜTZT
 
 ### Terminal 3 (Optional): Attacker-Server
 ```bash
@@ -55,6 +57,6 @@ Zeigt gestohlene Cookies und Tastatureingaben im Terminal an.
 
 ### Browser öffnen
 - **Unsichere Website:** `http://localhost:5000/` (XSS funktioniert!)
-- **Sichere Website:** `http://localhost:6000/` (XSS wird blockiert!)
+- **Sichere Website:** `http://localhost:5001/` (XSS wird blockiert!)
 - **Vergleich:** Teste denselben Payload auf beiden Seiten!
 
