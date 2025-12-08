@@ -9,21 +9,6 @@ def index():
     if search_query:
         search_results = f'<div style="max-width: 1200px; margin: 20px auto; padding: 20px; background: white;"><strong>Suchergebnisse:</strong> {search_query}</div>'
 
-    promo = request.args.get('promo', '')
-    promo_banner = ''
-    if promo:
-        promo_banner = f'<div style="background: #f093fb; color: white; padding: 15px; text-align: center;">Promotion: {promo}</div>'
-
-    error = request.args.get('error', '')
-    error_display = ''
-    if error:
-        error_display = f'<div style="max-width: 1200px; margin: 20px auto; padding: 20px; background: #fff3cd;"><strong>Fehler:</strong> {error}</div>'
-
-    filter_param = request.args.get('filter', '')
-    filter_display = ''
-    if filter_param:
-        filter_display = f'<div style="max-width: 1200px; margin: 20px auto; padding: 15px; background: #e7f3ff;"><strong>Filter:</strong> {filter_param}</div>'
-
     reviewer = request.args.get('reviewer', '')
     review = request.args.get('review', '')
     review_display = ''
@@ -33,9 +18,6 @@ def index():
     return render_template('index.html',
                          search_value=search_query,
                          search_results=search_results,
-                         promo_banner=promo_banner,
-                         error_display=error_display,
-                         filter_display=filter_display,
                          review_display=review_display)
 
 @app.route('/contact')

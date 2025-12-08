@@ -10,16 +10,6 @@ def index():
     if search_query:
         search_results = f'<div style="padding: 20px; background: white;"><strong>Suche (escaped):</strong> {search_query}</div>'
 
-    promo = escape(request.args.get('promo', ''))
-    promo_banner = ''
-    if promo:
-        promo_banner = f'<div style="background: #d4edda; padding: 15px;">Promo (escaped): {promo}</div>'
-
-    error = escape(request.args.get('error', ''))
-    error_display = ''
-    if error:
-        error_display = f'<div style="padding: 20px; background: #fff3cd;">Fehler (escaped): {error}</div>'
-
     reviewer = escape(request.args.get('reviewer', ''))
     review = escape(request.args.get('review', ''))
     review_display = ''
@@ -29,8 +19,6 @@ def index():
     response = make_response(render_template('index.html',
                          search_value=search_query,
                          search_results=search_results,
-                         promo_banner=promo_banner,
-                         error_display=error_display,
                          review_display=review_display))
 
     # Security Headers
