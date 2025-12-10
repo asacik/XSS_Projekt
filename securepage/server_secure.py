@@ -10,16 +10,9 @@ def index():
     if search_query:
         search_results = f'<div style="padding: 20px; background: white;"><strong>Suche (escaped):</strong> {search_query}</div>'
 
-    reviewer = escape(request.args.get('reviewer', ''))
-    review = escape(request.args.get('review', ''))
-    review_display = ''
-    if reviewer and review:
-        review_display = f'<div style="padding: 20px; background: #f8f9fa;"><strong>{reviewer}</strong><p>{review}</p><small>Alle Eingaben wurden escaped</small></div>'
-
     response = make_response(render_template('index.html',
                          search_value=search_query,
-                         search_results=search_results,
-                         review_display=review_display))
+                         search_results=search_results))
 
     # Security Headers
     response.headers['Content-Security-Policy'] = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';"
