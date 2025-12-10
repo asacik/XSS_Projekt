@@ -22,16 +22,14 @@ cd XSS_Projekt
 pip install -r requirements.txt
 ```
 
-### 3. Node.js Abhängigkeiten installieren (für Attacker-Server)
+### 3. tunnelmole installieren (für Angreifer-Simulation)
 ```bash
-cd AttServ
-npm install
-cd ..
+npm install -g tunnelmole
 ```
 
 ## Projekt starten
 
-Du brauchst **mindestens 2 Terminals** (optional 3 mit Attacker-Server):
+Du brauchst **3 Terminals**:
 
 ### Terminal 1: Unsichere Website (REFLECTED XSS)
 ```bash
@@ -47,13 +45,18 @@ python server_secure.py
 ```
 Server läuft auf: **`http://localhost:5001`** ✅ GESCHÜTZT
 
-### Terminal 3 (Optional): Attacker-Server
+### Terminal 3: Angreifer-Server mit tunnelmole
 ```bash
-cd AttServ
-npm start
+# Schritt 1: Python HTTP-Server starten
+python -m http.server 8000
+
+# Schritt 2: In einem neuen Terminal - tunnelmole starten
+tmole 8000
 ```
-Server läuft auf: **`http://localhost:3000`**
-Zeigt gestohlene Cookies und Tastatureingaben im Terminal an.
+
+**tunnelmole** erstellt eine öffentliche URL (z.B. `https://xyz.tunnelmole.net`), die zu deinem lokalen Server tunnelt. Diese URL verwendest du in deinen XSS-Payloads, um gestohlene Daten zu empfangen.
+
+Im Terminal siehst du dann alle eingehenden Requests mit gestohlenen Cookies und Tastatureingaben!
 
 ### Browser öffnen
 - **Unsichere Website:** `http://localhost:5000/` (XSS funktioniert!)
