@@ -9,16 +9,9 @@ def index():
     if search_query:
         search_results = f'<div style="max-width: 1200px; margin: 20px auto; padding: 20px; background: white;"><strong>Suchergebnisse:</strong> {search_query}</div>'
 
-    reviewer = request.args.get('reviewer', '')
-    review = request.args.get('review', '')
-    review_display = ''
-    if reviewer and review:
-        review_display = f'<div style="background: #f8f9fa; padding: 25px;"><strong>{reviewer}</strong><p>{review}</p></div>'
-
     return render_template('index.html',
                          search_value=search_query,
-                         search_results=search_results,
-                         review_display=review_display)
+                         search_results=search_results)
 
 @app.route('/contact')
 def contact():

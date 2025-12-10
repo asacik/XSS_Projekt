@@ -170,26 +170,6 @@
         </div>
     </main>
 
-    <section class="reviews-section" style="max-width: 1200px; margin: 50px auto; padding: 0 20px;">
-        <h2 class="section-title">Kundenbewertungen</h2>
-        <div style="background: white; padding: 30px; border-radius: 8px; margin-bottom: 30px;">
-            <h3>Ihre Meinung ist uns wichtig!</h3>
-            <form method="GET" action="/">
-                <input type="hidden" name="product_id" value="12345">
-                <div style="margin-bottom: 15px;">
-                    <label>Ihr Name:</label>
-                    <input type="text" name="reviewer" placeholder="Max Mustermann" style="width: 100%; padding: 10px;">
-                </div>
-                <div style="margin-bottom: 15px;">
-                    <label>Ihre Bewertung:</label>
-                    <textarea name="review" placeholder="Bewertung..." style="width: 100%; padding: 10px; min-height: 100px;"></textarea>
-                </div>
-                <button type="submit" style="background: #212529; color: white; padding: 12px 30px; border: none;">Bewertung abschicken</button>
-            </form>
-        </div>
-        {{ review_display|safe }}
-    </section>
-
     <footer class="footer">
         <div class="footer-bottom">
             © 2025 TechStore GmbH
