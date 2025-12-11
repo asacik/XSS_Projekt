@@ -36,15 +36,14 @@ Du brauchst **3 Terminals**:
 cd unsecurepage
 python server.py
 ```
-Server läuft auf: **`http://localhost:5000`** ⚠️ VERWUNDBAR
+Server läuft auf: **`http://localhost:5000`** 
 
 ### Terminal 2: Sichere Website (mit Schutz)
 ```bash
 cd securepage
 python server_secure.py
 ```
-Server läuft auf: **`http://localhost:5001`** ✅ GESCHÜTZT
-
+Server läuft auf: **`http://localhost:5001`** 
 ### Terminal 3: Angreifer-Server mit tunnelmole
 ```bash
 # Schritt 1: Python HTTP-Server starten
@@ -61,5 +60,3 @@ Im Terminal siehst du dann alle eingehenden Requests mit gestohlenen Cookies und
 ### Browser öffnen
 - **Unsichere Website:** `http://localhost:5000/` (XSS funktioniert!)
 - **Sichere Website:** `http://localhost:5001/` (XSS wird blockiert!)
-- **Vergleich:** Teste denselben Payload auf beiden Seiten!
-
