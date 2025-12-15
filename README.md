@@ -7,7 +7,7 @@ Diese Anwendung enthält **absichtlich Sicherheitslücken** und darf **NUR** in 
 
 Dieses Projekt demonstriert **Reflected XSS-Angriffe** anhand einer verwundbaren E-Commerce-Website und zeigt Schutzmaßnahmen.
 
-Eine ausführliche **Schritt-für-Schritt Anleitung** findest du in der Datei [SBS_Projekt.pdf](SBS_Projekt.pdf).
+Eine ausführliche **Schritt-für-Schritt Anleitung** findest du in der Datei [Projekt_Dokumentation.pdf](Projekt_Dokumentation.pdf).
 
 ##  Installation
 
