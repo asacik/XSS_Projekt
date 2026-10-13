@@ -1,4 +1,5 @@
 # XSS Projekt - Reflected XSS Demonstration
+![Copyright](https://img.shields.io/badge/%C2%A9%202026-Ilker%20Acikg%C3%B6z-red)
 
 ##  WARNUNG
 Diese Anwendung enthält **absichtlich Sicherheitslücken** und darf **NUR** in kontrollierten Umgebungen für Bildungszwecke verwendet werden.
